@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/newcss.css" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Grid */
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    
+    /* Header */
+    .header {
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+    
+    .nav__list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav__link {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+    
+    .nav__toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Home Section */
+    .home {
+      text-align: center;
+      padding: 50px 0;
+    }
+    
+    .home__img svg {
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+    
+    /* Skills Section */
+    .skills__content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Contact Section */
+    .contact__form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact__input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+    }
+    
+    /* --- Responsive Design --- */
+    @media (max-width: 768px) {
+    
+      .nav__menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+    
+      .nav__list {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+    
+      .nav__toggle {
+        display: block;
+      }
+    
+      /* Show Home Image */
+      .home__img {
+        display: block;
+        margin-bottom: 20px;
+      }
+    
+      /* Grid layout for mobile */
+      .home__container,
+      .about__container,
+      .skills__container,
+      .qualification__container,
+      .portfolio__container,
+      .contact__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    
+      /* Adjust Skills section */
+      .skills__content {
+        padding: 15px;
+      }
+    
+      /* Adjust Contact form */
+      .contact__form {
+        padding: 10px;
+      }
+    
+      /* Portfolio images resize */
+      .portfolio__img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    </style>
+    
+</head>
+<body oncontextmenu="return false">
+  <!-- Header Section -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">Nagendra K P</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+          <li class="nav__item">
+            <a href="#home" class="nav__link active-link">
+              <i class="uil uil-estate nav__icon"></i>Home
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">
+              <i class="uil uil-user nav__icon"></i>About
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#skills" class="nav__link">
+              <i class="uil uil-file-alt nav__icon"></i>Skills
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#qualification" class="nav__link">
+              <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#portfolio" class="nav__link">
+              <i class="uil uil-scenery nav__icon"></i>Projects
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">
+              <i class="uil uil-message nav__icon"></i>Contact-Me
+            </a>
+          </li>
+        </ul>
+        <i class="uil uil-times nav__close" id="nav-close"></i>
+      </div>
+      <div class="nav__btns">
+        <i class="uil uil-moon change-theme" id="theme-button"></i>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="uil uil-apps"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Home Section -->
+    <section class="home section" id="home">
+      <div class="home__container container grid">
+        <div class="home__content grid">
+          <div class="home__social">
+            <a href="https://www.linkedin.com/in/nagendrakp" target="_blank" class="home__social-icon">
+              <i class="uil uil-linkedin-alt home__icon"></i>
+            </a>
+            <a href="https://github.com/nagendrakp02?tab=repositories" target="_blank" class="home__social-icon">
+              <i class="uil uil-github-alt home__icon"></i>
+            </a>
+          </div>
+          <div class="home__img">
+            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <mask id="mask0" mask-type="alpha">
+                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+              </mask>
+              <g mask="url(#mask0)">
+                <image class="home__blob-img" x="-79" y="-46" xlink:href="assets/img/profile.jpg" alt="Profile picture of Nagendra K P" />
+              </g>
+            </svg>
+          </div>
+          <div class="home__data">
+            <h1 class="home__title">Hi, This is Nagendra K P</h1>
+            <h3 class="home__subtitle">Aspiring AIML Engineer</h3>
+            <p class="home__description">
+              M Tech student at 
+              <strong>M S Ramaiah University of Applied Sciences</strong>, Bengaluru.
+            </p>
+            <a href="#contact" class="button button--flex">
+              Contact me<i class="uil uil-message button__icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="home__scroll">
+          <a href="#about" class="home__scroll-button button--flex">
+            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+            <span class="home__scroll-name">Scroll down</span>
+            <i class="uil uil-arrow-down home__scroll-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+      <h2 class="section__title">About Me</h2>
+      <span class="section__subtitle">My introduction</span>
+      <div class="about__container container grid">
+        <img src="assets/img/about.jpg" alt="About image of Nagendra K P" class="about__img" />
+        <div class="about__data">
+          <p class="about__description">
+            An aspiring Data Scientist with a foundational understanding of Deep Learning, Computer Vision, and Machine Learning. 
+            Eager to leverage my academic background and self-taught projects to contribute to innovative data-driven solutions in a professional environment. 
+            Passionate about continuous learning and applying theoretical knowledge to real-world challenges.
+          </p>
+          <div class="about__info">
+            <div>
+              <span class="about__info-title">7.17</span>
+              <span class="about__info-name">Aggregate CGPA</span>
+            </div>
+            <div>
+              <span class="about__info-title">05+</span>
+              <span class="about__info-name">Projects</span>
+            </div>
+          </div>
+          <div class="about__buttons">
+            <a download href="assets/Nagendra_resume.pdf" class="button button--flex">
+              Download CV<i class="fas fa-download button__icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+      <h2 class="section__title">Skills</h2>
+      <span class="section__subtitle">My technical level</span>
+      <div class="skills__container container grid">
+        <!-- Programming Languages -->
+        <div class="skills__content skills__open">
+          <div class="skills__header">
+            <i class="fas fa-pencil-ruler skills__icon"></i>
+            <h1 class="skills__title">Programming Languages</h1>
+            <i class="uil uil-angle-down skills__arrow"></i>
+          </div>
+          <div class="skills__list grid">
+            <div class="skills__data"><h3 class="skills__name">Python</h3></div>
+            <div class="skills__data"><h3 class="skills__name">SQL</h3></div>
+            <div class="skills__data"><h3 class="skills__name">MongoDB</h3></div>
+          </div>
+        </div>
+        <!-- Machine Learning & Deep Learning -->
+        <div class="skills__content skills__close">
+          <div class="skills__header">
+            <i class="fas fa-code skills__icon"></i>
+            <h1 class="skills__title">Machine Learning & Deep Learning</h1>
+            <i class="uil uil-angle-down skills__arrow"></i>
+          </div>
+          <div class="skills__list grid">
+            <div class="skills__data"><h3 class="skills__name">Linear Regression</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Logistic Regression</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Decision Trees</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Random Forest</h3></div>
+            <div class="skills__data"><h3 class="skills__name">ANN, CNN, RNN</h3></div>
+          </div>
+        </div>
+        <!-- Tools & Frameworks -->
+        <div class="skills__content skills__close">
+          <div class="skills__header">
+            <i class="fas fa-swatchbook skills__icon"></i>
+            <h1 class="skills__title">Tools & Frameworks</h1>
+            <i class="uil uil-angle-down skills__arrow"></i>
+          </div>
+          <div class="skills__list grid">
+            <div class="skills__data"><h3 class="skills__name">TensorFlow</h3></div>
+            <div class="skills__data"><h3 class="skills__name">PyTorch</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Scikit-learn</h3></div>
+            <div class="skills__data"><h3 class="skills__name">AWS</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Docker</h3></div>
+            <div class="skills__data"><h3 class="skills__name">Git</h3></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qualifications Section -->
+    <section class="qualification__section service__section" id="qualification">
+      <h2 class="section__title">Qualification</h2>
+      <span class="section__subtitle">My personal journey</span>
+      <div class="qualification__container container grid services__container">
+        <div class="qualification__tabs">
+          <div class="qualification__button button--flex qualification__active" data-target="#education">
+            <i class="uil uil-graduation-cap qualification__icon"></i>Education
+          </div>
+        </div>
+        <div class="qualification__sections">
+          <div class="qualification__content qualifiation__active services__content" data-content id="education">
+            <!-- SSLC -->
+            <div class="qualification__data">
+              <div>
+                <h3 class="qualification__title">SSLC</h3>
+                <span class="qualification__subtitle">High School</span>
+                <div class="qualification__calender"><i class="uil uil-calendar-alt"></i> - 2020</div>
+              </div>
+              <div>
+                <span class="qualification__rounder"></span>
+                <span class="qualification__line"></span>
+              </div>
+            </div>
+            <!-- Class 12th -->
+            <div class="qualification__data">
+              <div>
+                <h3 class="qualification__title">Class 12th</h3>
+                <span class="qualification__subtitle">Pre University College</span>
+                <div class="qualification__calender"><i class="uil uil-calendar-alt"></i> - 2022</div>
+              </div>
+              <div>
+                <span class="qualification__rounder"></span>
+                <span class="qualification__line"></span>
+              </div>
+            </div>
+            <!-- College -->
+            <div class="qualification__data">
+              <div>
+                <h3 class="qualification__title">B Tech</h3>
+                <span class="qualification__subtitle">Cambridge Institute of Technology</span>
+                <div class="qualification__calender"><i class="uil uil-calendar-alt"></i> 2020 - 2024</div>
+              </div>
+              <div>
+                <span class="qualification__rounder"></span>
+                <span class="qualification__line"></span>
+              </div>
+              <div>
+                <div class="qualification__data">
+                  <div>
+                    <h3 class="qualification__title">M Tech</h3>
+                    <span class="qualification__subtitle">M S Ramaiah University of Applied Sciences</span>
+                    <div class="qualification__calender"><i class="uil uil-calendar-alt"></i> 2024 - 2026</div>
+                  </div>
+                  <div>
+                    <span class="qualification__rounder"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="portfolio section" id="portfolio">
+      <h2 class="section__title">Projects</h2>
+      <span class="section__subtitle">Most recent work</span>
+      <div class="portfolio__container container swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Safety Helmet Detection Model -->
+          <div class="portfolio__content grid swiper-slide">
+            <img src="assets/img/portfolio1.png" alt="Safety Helmet Detection Model" class="portfolio__img" />
+            <div class="portfolio__data">
+              <h3 class="portfolio__title">Safety Helmet Detection Model</h3>
+              <p class="portfolio__description">
+                Utilizes an enhanced YOLO-M architecture for real-time detection of safety helmet compliance. 
+                Includes dataset assembly, preprocessing, and fine-tuning for helmet detection. 
+                Evaluated using metrics like precision and recall.
+              </p>
+              <a href="https://github.com/nagendrakp/safety-helmet-detection" class="button button--flex button--small portfolio__button">
+                GitHub Repository<i class="uil uil-external-link-alt button__icon"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Forest Fire Prediction -->
+          <div class="portfolio__content grid swiper-slide">
+            <img src="assets/img/portfolio2.png" alt="Forest Fire Prediction" class="portfolio__img" />
+            <div class="portfolio__data">
+              <h3 class="portfolio__title">Forest Fire Prediction</h3>
+              <p class="portfolio__description">
+                Supervised Machine Learning project to predict forest fires based on weather reports. 
+                Hyperparameter tuning performed using RidgeCV. Models used include Linear Regression, Lasso Regression, and Ridge Regression.
+              </p>
+              <a href="https://github.com/nagendrakp/forest-fire-prediction" class="button button--flex button--small portfolio__button">
+                GitHub Repository<i class="uil uil-external-link-alt button__icon"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Movie Reviews Sentiment Analysis -->
+          <div class="portfolio__content grid swiper-slide">
+            <img src="assets/img/portfolio3.png" alt="Movie Reviews Sentiment Analysis" class="portfolio__img" />
+            <div class="portfolio__data">
+              <h3 class="portfolio__title">Movie Reviews Sentiment Analysis</h3>
+              <p class="portfolio__description">
+                Natural Language Processing project to classify movie reviews as positive or negative. 
+                Includes data preprocessing, encoding, cleaning, and binary classification.
+              </p>
+              <a href="https://github.com/nagendrakp/movie-reviews-sentiment-analysis" class="button button--flex button--small portfolio__button">
+                GitHub Repository<i class="uil uil-external-link-alt button__icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"><i class="uil uil-angle-right-b swiper-portfolio-icon"></i></div>
+        <div class="swiper-button-prev"><i class="uil uil-angle-left-b swiper-portfolio-icon"></i></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <h2 class="section__title">Contact Me</h2>
+      <span class="section__subtitle">Get in touch</span>
+      <div class="contact__container container grid">
+        <div>
+          <div class="contact__information">
+            <i class="uil uil-calling contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Phone</h3>
+              <span class="contact__subtitle">7795122125</span>
+            </div>
+          </div>
+          <div class="contact__information">
+            <i class="uil uil-envelope-minus contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Email</h3>
+              <span class="contact__subtitle">nagendra.kp02@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact__information">
+            <i class="uil uil-map-marker contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Location</h3>
+              <span class="contact__subtitle">Bangalore, Karnataka, India</span>
+            </div>
+          </div>
+        </div>
+        <form action="" class="contact__form grid">
+          <div class="contact__inputs grid">
+            <div class="contact__content">
+              <label for="name" class="content__label">Name</label>
+              <input type="text" class="contact__input" name="name" required />
+            </div>
+            <div class="contact__content">
+              <label for="email" class="content__label">Email</label>
+              <input type="email" class="contact__input" name="email" required />
+            </div>
+          </div>
+          <div class="contact__content">
+            <label for="message" class="content__label">Message</label>
+            <textarea name="message" id="message" cols="0" rows="7" class="contact__input" required></textarea>
+          </div>
+          <div>
+            <button type="submit" class="button button--flex">
+              Send Message<i class="uil uil-message button__icon"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer__bg">
+      <div class="footer__container container grid">
+        <div>
+          <h1 class="footer__title">Nagendra K P</h1>
+          <span class="footer__subtitle">Student</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="#qualification" class="footer__link">Qualification</a></li>
+          <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+          <li><a href="#contact" class="footer__link">Contact-Me</a></li>
+        </ul>
+        <div class="footer__socials">
+          <a href="https://www.instagram.com/nagendra_kp" target="_blank" class="footer__social">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com/nagendra_kp" target="_blank" class="footer__social">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <p class="footer__copy">&#169; Nagendra K P. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top Button -->
+  <a href="#" class="scrollup" id="scroll-up"><i class="uil uil-arrow-up scrollup__icon"></i></a>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
+  <script src="assets/ptj.js"></script>
+  <script>
+    document.querySelector('.contact__form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.querySelector('.contact__input[name="name"]').value;
+      const email = document.querySelector('.contact__input[name="email"]').value;
+      const message = document.querySelector('.contact__input[name="message"]').value;
+
+      if (!name || !email || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      // Simulate form submission
+      alert('Message sent successfully!');
+    });
+  </script>
+
+</body>
+</html>
