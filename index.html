@@ -408,10 +408,28 @@
         return;
       }
 
-      // Simulate form submission
-      alert('Message sent successfully!');
     });
   </script>
+  <!-- Scripts -->
+<script src="assets/swiper-bundle.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init('53gYIV_pcHGTBYEUK'); // Replace YOUR_PUBLIC_KEY from EmailJS dashboard
+  })();
+
+  document.querySelector('.contact__form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_p70hr2e', 'template_sqdn2ts', this)
+      .then(function() {
+        alert('✅ Message sent successfully!');
+        document.querySelector('.contact__form').reset();
+      }, function(error) {
+        alert('❌ Failed to send message. Please try again.');
+      });
+  });
+</script>
   
 </body>
 </html>
